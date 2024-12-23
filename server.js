@@ -10,6 +10,7 @@ const bodyParser = require('body-parser')
 
 const indexRouter = require('./routes/index')
 const authorRouter = require('./routes/author')
+const bookRouter = require('./routes/books')
 
 // Set up EJS view engine and views directory
 app.set('view engine', 'ejs')
@@ -29,6 +30,7 @@ db.once('open', () => console.log('Connected to Mongoose'))
 // Use index router for the root route
 app.use('/', indexRouter)
 app.use('/authors', authorRouter)
+app.use('/books', bookRouter)
 
 
 
