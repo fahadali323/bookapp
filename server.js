@@ -6,6 +6,8 @@ if (process.env.NODE_ENV !== 'production') {
 const express = require('express')
 const app = express()
 const expressLayout = require('express-ejs-layouts')
+const bodyParser = require('body-parser')
+
 const indexRouter = require('./routes/index')
 const authorRouter = require('./routes/author')
 
@@ -15,6 +17,7 @@ app.set('views', __dirname + '/views')
 app.set('layout', 'layouts/layout')
 app.use(expressLayout)
 app.use(express.static('public')) // Serve static files (HTML, CSS, JS)
+app.use(bodyParser.urlencoded({limit: '10mb', extended: false}))
 
 // Set up mongoose to connect to the database
 const mongoose = require('mongoose')
