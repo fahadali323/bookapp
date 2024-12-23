@@ -7,6 +7,7 @@ const express = require('express')
 const app = express()
 const expressLayout = require('express-ejs-layouts')
 const indexRouter = require('./routes/index')
+const authorRouter = require('./routes/author')
 
 // Set up EJS view engine and views directory
 app.set('view engine', 'ejs')
@@ -24,6 +25,9 @@ db.once('open', () => console.log('Connected to Mongoose'))
 
 // Use index router for the root route
 app.use('/', indexRouter)
+app.use('/authors', authorRouter)
+
+
 
 // Start the server on the specified port
 app.listen(process.env.PORT || 3000, () => {
